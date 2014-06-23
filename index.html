@@ -29,9 +29,20 @@
     <div class="container">
       <section id="main_content">
         <h1>
-<a name="teleporter" class="anchor" href="#teleporter"><span class="octicon octicon-link"></span></a>teleporter</h1>
+<a name="teleporter" class="anchor" href="#teleporter"><span class="octicon octicon-link"></span></a>Teleporter</h1>
 
-<p>Teleporter is a hot and cold migration tool to move servers and disks to Openstack Image Service (Glance)</p>
+<p>Teleporter is a hot and cold migration tool to move servers and disks to Openstack Image Service (Glance) of the StackOps Platform. This tools can be used as a cold or hot migration service. It can run inside a running VM</p>
+
+<h2>
+<a name="how-to-use-it" class="anchor" href="#how-to-use-it"><span class="octicon octicon-link"></span></a>How to use it</h2>
+
+<p>Teleporter it is pretty straight forward. You just need a Linux Operating System with dd and curl installed with access to the net.</p>
+
+<hr><p>Execute the following command:</p>
+
+<p><code>curl -L https://raw.githubusercontent.com/StackOps/teleporter/master/teleporter.sh | sudo sh -s -- STACKOPS_USERNAME STACKOPS_PASSWORD STACKOPS_TENANT &lt;image-name&gt; &lt;device-name&gt;</code></p>
+
+<hr><p>Once executed, the tool will dump the /dev/&lt;device-name&gt; device or /dev/sda by default to your <a href="www.stackops.com">stackops</a> Glance account automatically. This process can take several hours since you are moving gigabytes of information, and can be error prone if your network is not very reliable.</p>
       </section>
     </div>
 
