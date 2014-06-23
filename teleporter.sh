@@ -318,7 +318,7 @@ __check_device() {
 __get_auth_token() {
     credentials=`curl -s -d "{\"auth\":{\"passwordCredentials\": {\"username\": \"$OS_USERNAME\", \"password\": \"$OS_PASSWORD\"}, \"tenantName\": \"$OS_TENANT_NAME\"}}" -H "Content-type: application/json" $OS_AUTH_URL/tokens`
     auth_token=`echo $credentials | python -c "import sys; import json; tok = json.loads(sys.stdin.read()); print tok['access']['token']['id'];"`
-    [[ ! -z "${auth_token}" ]] || { echo >&2 `echo $credentials | python -c "import sys; import json; tok = json.loads(sys.stdin.read()); print tok['error'];"`; exit 1; }
+    [ ! -z "${auth_token}" ] || { echo >&2 `echo $credentials | python -c "import sys; import json; tok = json.loads(sys.stdin.read()); print tok['error'];"`; exit 1; }
     echo $auth_token
 }
 
@@ -353,7 +353,7 @@ conf_ubuntu_1404() {
 
 
 install_ubuntu_1204() {
-     install_ubuntu_1204
+     install_ubuntu_1404
 }
 
 post_install_ubuntu_1204() {
