@@ -364,6 +364,18 @@ conf_ubuntu_1204() {
     conf_ubuntu_1404
 }
 
+install_debian() {
+     install_ubuntu_1404
+}
+
+post_install_debian() {
+     post_install_ubuntu_1404
+}
+
+conf_debian() {
+    conf_ubuntu_1404
+}
+
 DEPS_INSTALL_FUNC="install_${DISTRO_NAME_L}${DISTRO_VERSION_NO_DOTS}"
 CONFIG_FUNC="conf_${DISTRO_NAME_L}${DISTRO_VERSION_NO_DOTS}"
 POST_INSTALL_FUNC="post_install_${DISTRO_NAME_L}${DISTRO_VERSION_NO_DOTS}"
