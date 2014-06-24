@@ -40,9 +40,68 @@
 
 <hr><p>Execute the following command:</p>
 
-<p><code>curl -L https://raw.githubusercontent.com/StackOps/teleporter/master/teleporter.sh | sudo sh -s -- STACKOPS_USERNAME STACKOPS_PASSWORD STACKOPS_TENANT &lt;image-name&gt; &lt;device-name&gt;</code></p>
+<p><code>curl -L goo.gl/3XmHG4 | sudo sh -s -- STACKOPS_USERNAME STACKOPS_PASSWORD STACKOPS_TENANT &lt;image-name&gt; &lt;device-name&gt;</code></p>
 
 <hr><p>Once executed, the tool will dump the /dev/&lt;device-name&gt; device or /dev/sda by default to your <a href="www.stackops.com">stackops</a> Glance account automatically. This process can take several hours since you are moving gigabytes of information, and can be error prone if your network is not very reliable.</p>
+
+<h1>
+<a name="cloud-tested" class="anchor" href="#cloud-tested"><span class="octicon octicon-link"></span></a>Cloud Tested</h1>
+
+<h2>
+<a name="amazon-web-services-ec2" class="anchor" href="#amazon-web-services-ec2"><span class="octicon octicon-link"></span></a>Amazon Web Services EC2</h2>
+
+<table>
+<thead><tr>
+<th>Image</th>
+<th>Did it work?</th>
+<th>Post installation notes</th>
+</tr></thead>
+<tbody><tr>
+<td>ubuntu 12.04.4 64bit Server Paravirtual</td>
+<td>Yes</td>
+<td>No</td>
+</tr></tbody>
+</table><h2>
+<a name="digital-ocean" class="anchor" href="#digital-ocean"><span class="octicon octicon-link"></span></a>Digital Ocean</h2>
+
+<table>
+<thead><tr>
+<th>Image</th>
+<th>Did it work?</th>
+<th>Post installation notes</th>
+</tr></thead>
+<tbody><tr>
+<td>ubuntu 12.04.4 Server 64bit</td>
+<td>Yes</td>
+<td>Network is static. Should be modified to dhcp</td>
+</tr></tbody>
+</table><h2>
+<a name="google-cloud-engine" class="anchor" href="#google-cloud-engine"><span class="octicon octicon-link"></span></a>Google Cloud Engine</h2>
+
+<table>
+<thead><tr>
+<th>Image</th>
+<th>Did it work?</th>
+<th>Post installation notes</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Debian 7 64bit</td>
+<td>Yes</td>
+<td>* Changed root password</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Deleted folder /usr/share/google</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Enabled tty in /etc/inittab</td>
+</tr>
+</tbody>
+</table>
       </section>
     </div>
 
