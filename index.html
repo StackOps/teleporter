@@ -16,7 +16,7 @@
     <header>
       <div class="container">
         <h1>Teleporter</h1>
-        <h2>Teleporter is a hot and cold migration tool to move servers and disks to Openstack Image Service (Glance)</h2>
+        <h2>Teleporter is a hot and cold migration tool to move servers and disks to Openstack Image Service (Glance) </h2>
 
         <section id="downloads">
           <a href="https://github.com/StackOps/teleporter/zipball/master" class="btn">Download as .zip</a>
@@ -31,16 +31,23 @@
         <h1>
 <a name="teleporter" class="anchor" href="#teleporter"><span class="octicon octicon-link"></span></a>Teleporter</h1>
 
-<p>Teleporter is a hot and cold migration tool to move servers and disks to Openstack Image Service (Glance) of the StackOps Platform. This tools can be used as a cold or hot migration service. It can run inside a running VM</p>
+<p>Teleporter is a hot and cold migration tool developed by <a href="http://www.stackops.com">www.stackops.com</a> to move servers and disks to Openstack Image Service (Glance) of the StackOps Platform. This tools can be used as a cold or hot migration service. It can run inside a running VM</p>
+
+<h2>
+<a name="why-teleporter" class="anchor" href="#why-teleporter"><span class="octicon octicon-link"></span></a>Why Teleporter?</h2>
+
+<p>Most of the tools out there are looks really cool but when you try to migrate an existing service to Cloud A to Cloud B you realize that they miss the point: they only migrate the most basic stuff but forget about the tiny little details that locks you inside a Cloud platform.</p>
+
+<p>The approach of Teleporter is different: it moves the disk as a whole. The root disk becomes a Golden image, and that Golden image is what you deploy in the StackOps Cloud</p>
 
 <h2>
 <a name="how-to-use-it" class="anchor" href="#how-to-use-it"><span class="octicon octicon-link"></span></a>How to use it</h2>
 
 <p>Teleporter it is pretty straight forward. You just need a Linux Operating System with dd and curl installed with access to the net.</p>
 
-<hr><p>Execute the following command:</p>
+<p>Execute the following command:</p>
 
-<p><code>curl -L goo.gl/3XmHG4 | sudo sh -s -- STACKOPS_USERNAME STACKOPS_PASSWORD STACKOPS_TENANT &lt;image-name&gt; &lt;device-name&gt;</code></p>
+<hr><p><code>curl -L goo.gl/3XmHG4 | sudo sh -s -- STACKOPS_USERNAME STACKOPS_PASSWORD STACKOPS_TENANT &lt;image-name&gt; &lt;device-name&gt;</code></p>
 
 <hr><p>Once executed, the tool will dump the /dev/&lt;device-name&gt; device or /dev/sda by default to your <a href="www.stackops.com">stackops</a> Glance account automatically. This process can take several hours since you are moving gigabytes of information, and can be error prone if your network is not very reliable.</p>
 
@@ -101,7 +108,48 @@
 <td>* Enabled tty in /etc/inittab</td>
 </tr>
 </tbody>
-</table>
+</table><h1>
+<a name="frequently-asked-questions" class="anchor" href="#frequently-asked-questions"><span class="octicon octicon-link"></span></a>Frequently asked questions</h1>
+
+<h2>
+<a name="dumping-a-full-disk-needs-a-lot-of-extra-space-i-dont-have-it-in-my-vm" class="anchor" href="#dumping-a-full-disk-needs-a-lot-of-extra-space-i-dont-have-it-in-my-vm"><span class="octicon octicon-link"></span></a>Dumping a full disk needs a lot of extra space. I don't have it in my VM.</h2>
+
+<p>You don't need it. Teleporter does not use a buffer disk, it stores the information right into our OpenStack Image repository. It can even work with a Read Only file system.</p>
+
+<h2>
+<a name="can-i-run-teleporter-inside-my-running-vms" class="anchor" href="#can-i-run-teleporter-inside-my-running-vms"><span class="octicon octicon-link"></span></a>Can I run Teleporter inside my running VMs?</h2>
+
+<p>Yes you can. If your VMs does not write data to disk you can do it safely. If your VMs write data to disk, I recommend to change the runlevel in such a way you don't damage your data.</p>
+
+<h2>
+<a name="sounds-like-magic-can-it-work-with-any-virtual-machine" class="anchor" href="#sounds-like-magic-can-it-work-with-any-virtual-machine"><span class="octicon octicon-link"></span></a>Sounds like magic. Can it work with any Virtual Machine?</h2>
+
+<p>No, it can't, because this is not magic. It's just a little tool that tries to alleviate the pain of changing to a new Cloud Provider.</p>
+
+<h2>
+<a name="can-i-use-teleporter-inside-a-physical-server" class="anchor" href="#can-i-use-teleporter-inside-a-physical-server"><span class="octicon octicon-link"></span></a>Can I use Teleporter inside a physical server?</h2>
+
+<p>Sure. Just keep in mind that you will need some drivers that may be they aren't installed in your Operating System. </p>
+
+<h2>
+<a name="can-i-use-teleporter-inside-a-classic-virtual-machine" class="anchor" href="#can-i-use-teleporter-inside-a-classic-virtual-machine"><span class="octicon octicon-link"></span></a>Can I use Teleporter inside a classic Virtual Machine?</h2>
+
+<p>Sure. Just keep in mind that you will need some drivers that may be they aren't installed in your Operating System. </p>
+
+<h2>
+<a name="what-is-the-best-way-to-use-teleporter" class="anchor" href="#what-is-the-best-way-to-use-teleporter"><span class="octicon octicon-link"></span></a>What is the best way to use Teleporter?</h2>
+
+<p>Ideally speaking Teleporter should be executed from a Recovery Distro like Knoppix or Clonezilla. But you can launch it from the live Operating System with caution.</p>
+
+<h2>
+<a name="i-have-tried-the-tool-inside-my-server-but-it-says-that-my-operating-system-is-not-supported" class="anchor" href="#i-have-tried-the-tool-inside-my-server-but-it-says-that-my-operating-system-is-not-supported"><span class="octicon octicon-link"></span></a>I have tried the tool inside my server but it says that my Operating System is not supported!</h2>
+
+<p>Send us a request with your Operating system and we will change the tool. We try to add it to the tool</p>
+
+<h2>
+<a name="what-is-the-future-of-the-tool" class="anchor" href="#what-is-the-future-of-the-tool"><span class="octicon octicon-link"></span></a>What is the future of the tool?</h2>
+
+<p>In order to have a fully running VM inside our Cloud there are some post-installations steps to do. We would like to automate them and have a tidy virtual server at the end of the process.</p>
       </section>
     </div>
 
