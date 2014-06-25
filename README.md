@@ -1,8 +1,3 @@
-teleporter
-==========
-
-Teleporter is a hot and cold migration tool to move servers and disks to Openstack Image Service (Glance)
-
 # Teleporter
 Teleporter is a hot and cold migration tool developed by [www.stackops.com](http://www.stackops.com) to move servers and disks to Openstack Image Service (Glance) of the StackOps Platform. This tools can be used as a cold or hot migration service. It can run inside a running VM
 
